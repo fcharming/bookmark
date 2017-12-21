@@ -1,0 +1,7 @@
+django 使用ldap登录
+django集成社交网站账号登录
+
+第四章：
+1、使用Django的User框架，登入登出、密码修改、密码重置视图
+2、用户注册以及扩展User模型，定制个性化的Profile模型，增加一些字段
+3、message显示消息框架
