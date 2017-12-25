@@ -26,6 +26,7 @@ class ImageCreateForm(forms.ModelForm):
         image = super(ImageCreateForm, self).save(commit=False)
         image_url = self.cleaned_data['url']
         image_name = '{}.{}'.format(slugify(image.title),image_url.rsplit('.',1)[1].lower())
+        #从给定的URL下载图片
         request = urllib2.Request(image_url)
         response = urllib2.urlopen(request)
         image.image.save(image_name,ContentFile(response.read()),save=False)

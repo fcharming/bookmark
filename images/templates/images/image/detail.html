@@ -4,7 +4,7 @@
     <h1>{{ image.title }}</h1>
     {% load thumbnail %}
     {% thumbnail image.image "300" as im %}
-    <a href="{{ image.image.url }}">![]({{ im.url }})</a>
+    <a href="{{ image.image.url }}"><img src="{{ im.url }}" class="image-preview"</a>
     {% endthumbnail %}
     {% with total_likes=image.user_like.count users_like=image.user_like.all %}
         <div class="image-info">
