@@ -1,3 +1,4 @@
+#coding:utf-8
 """
 Django settings for bookmarks project.
 
@@ -132,3 +133,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+
+#为所有出现在ABSOLUTE_URL_OVERRIDES设置中的模型（models）动态添加一个get_absolute_url()方法
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail', args=[u.username])
+}
