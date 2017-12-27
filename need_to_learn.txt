@@ -5,3 +5,16 @@ django集成社交网站账号登录
 1、使用Django的User框架，登入登出、密码修改、密码重置视图
 2、用户注册以及扩展User模型，定制个性化的Profile模型，增加一些字段
 3、message显示消息框架
+
+第六章：
+1、使用一个中介模型（Contact model）存储user之间的关系，已经其他额外信息
+2、在不对系统自带user model修改的情况下，使用User.add_to_class新增following关系，这样可以使用user.following.all()
+或者user.follower.all()。这成为monkey patch
+3、在setting.py使用ABSOLUTE_URL_OVERRIDES构建user的标准url
+4、ajax创建user follow，views.py--->urls.py--->js post url and data，then 修改前端页面值
+5、活动流（activity stream），创建actions model存储信息，但是一个普通的ForeignKey只能指向一个其他的模型（model）
+所以使用ContentType增加target_ct,target_id,target，并且增加create_action(user, verb, target=None)函数，用以
+方便地新增actions
+6、避免重复的操作：算法是找到过去1分钟的所有actions，然后根据当前target找出action，如果这个action不在过去1分钟内，则不重复，否则重复
+7、添加活动流的方法是在各个view中执行操作后，调用create_action函数
+8、redis的使用，用来计数：redis的python模块，应用是为图片的view数排序并展示。
