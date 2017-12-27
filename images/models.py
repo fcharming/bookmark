@@ -16,6 +16,8 @@ class Image(models.Model):
     description = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True,db_index=True)
     user_like = models.ManyToManyField(settings.AUTH_USER_MODEL,related_name="images_liked",blank=True)
+    #用户喜欢总数
+    total_likes = models.PositiveIntegerField(db_index=True,default=0)
 
     def __unicode__(self):
         return self.title

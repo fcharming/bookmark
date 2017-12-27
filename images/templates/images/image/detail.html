@@ -10,6 +10,10 @@
         <div class="image-info">
             <div>
                 <span class="count">
+                    <span class="total">{{ total_views }}</span>
+                    view{{ total_views|pluralize }}
+                </span>
+                <span class="count">
                     <span class="total">{{ total_likes }}</span>
                     like{{ total_likes|pluralize }}
                 </span>
@@ -24,9 +28,9 @@
             {{ image.description|linebreaks }}
         </div>
         <div class="image-likes">
-            {% for user in image.users_like.all %}
+            {% for user in image.user_like.all %}
                 <div>
-                    ![]({{ user.profile.photo.url }})
+                    <img src="{{ user.profile.photo.url }}">
                     <p>{{ user.first_name }}</p>
                 </div>
             {% empty %}
